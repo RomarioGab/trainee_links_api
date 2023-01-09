@@ -4,9 +4,11 @@ const mongoose  = require("mongoose");
 const {MONGO_DB_CONFIG} = require("./config/app.config");
 const errors = require("./middleware/errors");
 
+const mongoURI = "mongodb+srv://Antonio:QOqC76E93uex9mh5@trainee-links.yhdui9p.mongodb.net/?retryWrites=true&w=majority";
+
 mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGODB_URI,{
+mongoose.connect(mongoURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(
