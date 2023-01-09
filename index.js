@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
-const mongoose  = require("mongoose");
+const { MongoClient } = require("mongodb");
 const {MONGO_DB_CONFIG} = require("./config/app.config");
 const errors = require("./middleware/errors");
 
-mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_DB_CONFIG.DB,{
+app.use(express.static("public"));
+
+MongoClient.connect(MONGO_DB_CONFIG.DB,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(
@@ -16,6 +17,7 @@ mongoose.connect(MONGO_DB_CONFIG.DB,{
         console.log("Database can`t connected:" + error);
     }
 );
+
 
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
