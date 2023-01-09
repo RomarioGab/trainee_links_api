@@ -1,5 +1,5 @@
 const MONGO_DB_CONFIG = {
-    DB: "mongodb://localhost/trainne-links",
+    DB: "mongodb+srv://Antonio:Meumau.M@trainee-links.yhdui9p.mongodb.net/?retryWrites=true&w=majority",
 };
 
 module.exports ={
