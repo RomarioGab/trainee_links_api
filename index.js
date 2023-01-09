@@ -5,7 +5,8 @@ const {MONGO_DB_CONFIG} = require("./config/app.config");
 const errors = require("./middleware/errors");
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_DB_CONFIG.DB,{
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(
