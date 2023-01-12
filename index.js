@@ -4,23 +4,6 @@ const mongoose  = require("mongoose");
 const {MONGO_DB_CONFIG} = require("./config/app.config");
 const errors = require("./middleware/errors");
 
-var multer = require('multer');
-var upload = multer();
-
-// for parsing application/json
-app.use(express.json()); 
-
-// for parsing application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true })); 
-
-// for parsing multipart/form-data
-app.use(upload.array()); 
-app.use(express.static('public'));
-
-var bodyParser = require("body-parser");
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_DB_CONFIG.DB,{
@@ -36,6 +19,12 @@ mongoose.connect(MONGO_DB_CONFIG.DB,{
 );
 
 app.use(express.json());
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 app.use('/uploads', express.static('uploads'));
 app.use("/api", require("./routes/app.routes"));
 app.use(errors.errorHandler);
