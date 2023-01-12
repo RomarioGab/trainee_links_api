@@ -26,8 +26,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 app.use(express.json());       // to support JSON-encoded bodies
-app.use(bodyParser.json());    
-app.use(bodyParser.urlencoded);
+app.use(express.urlencoded());
 
 app.use('/uploads', express.static('uploads'));
 app.use("/api", require("./routes/app.routes"));
