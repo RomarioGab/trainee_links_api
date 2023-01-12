@@ -4,6 +4,19 @@ const mongoose  = require("mongoose");
 const {MONGO_DB_CONFIG} = require("./config/app.config");
 const errors = require("./middleware/errors");
 
+var multer = require('multer');
+var upload = multer();
+
+// for parsing application/json
+app.use(express.json()); 
+
+// for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true })); 
+
+// for parsing multipart/form-data
+app.use(upload.array()); 
+app.use(express.static('public'));
+
 mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_DB_CONFIG.DB,{

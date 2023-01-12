@@ -5,7 +5,7 @@ async function createLink(params, callback) {
     if (!params.link_title){
         return callback(
             {
-                message: "odds required",
+                message: "Title required",
             },
             ""
         );
