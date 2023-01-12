@@ -6,9 +6,10 @@ const errors = require("./middleware/errors");
 
 var bodyParser = require('body-parser');
 const multer = require('multer');
+var upload = multer();
 
 mongoose.Promise = global.Promise;
-mongoose.set("strictQuery", false);
+//mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_DB_CONFIG.DB,{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -20,8 +21,10 @@ mongoose.connect(MONGO_DB_CONFIG.DB,{
         console.log("Database can`t connected:" + error);
     }
 );
+
+app.use(upload.array());
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.use('/uploads', express.static('uploads'));
 app.use("/api", require("./routes/app.routes"));
