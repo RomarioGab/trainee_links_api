@@ -17,6 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_DB_CONFIG.DB,{
