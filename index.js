@@ -4,6 +4,8 @@ const mongoose  = require("mongoose");
 const {MONGO_DB_CONFIG} = require("./config/app.config");
 const errors = require("./middleware/errors");
 
+var bodyParser = require('body-parser');
+
 mongoose.Promise = global.Promise;
 mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_DB_CONFIG.DB,{
@@ -18,15 +20,14 @@ mongoose.connect(MONGO_DB_CONFIG.DB,{
     }
 );
 
-var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-app.use(express.json());
+app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded());
-app.use(express.multipart());
+app.use(bodyParser.json());    
 
 app.use('/uploads', express.static('uploads'));
 app.use("/api", require("./routes/app.routes"));
