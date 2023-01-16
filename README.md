@@ -24,7 +24,9 @@ ou então se preferir ainda podes clonar o projeto para sua máquina. Importante
 
 Para instalar a dependências...
 
-Não esqueça de vereficar se têns um banco de dados MongoDB na sua máquina e alterar a configurações no projectopara apontar para o seu banco de dados local
+Não esqueça de vereficar se têns um banco de dados MongoDB na sua máquina e alterar a configurações no projectopara apontar para o seu banco de dados local se não :
+
+- [Donwload and install MongoDB](https://www.mongodb.com/try/download/community)
 
 Na pasta config do projeto no ficheiro >config.js
 
