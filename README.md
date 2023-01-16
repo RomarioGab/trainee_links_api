@@ -26,8 +26,16 @@ Para instalar a dependencias...
 
 Não esquece de vereficar se tens um banco de dados MongoDB na sua maquina e alterar a configurações no projecto na para apontar para o seu banco de dados locar
 
+No derectorio config do projecto no
+ficheiro config.js
 ```
+const MONGO_DB_CONFIG = {
+    DB: "adiconar aqui caminho para seu banco de dados",
+};
 
+module.exports ={
+   MONGO_DB_CONFIG, 
+};
 
 ```
 
